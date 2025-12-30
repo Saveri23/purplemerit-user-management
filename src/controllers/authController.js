@@ -1,5 +1,5 @@
 const User = require('../models/User');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 const generateToken = (id) => jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: '1d' });
@@ -27,6 +27,7 @@ exports.register = async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 };
+
 
 // LOGIN
 exports.login = async (req, res) => {
